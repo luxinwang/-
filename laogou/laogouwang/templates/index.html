@@ -1,0 +1,57 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<script src="{% static 'js/jquery-1.3.2.min.js' %}"></script>
+	<script src="{% static 'js/pace.js' %}"></script>
+	<title>老狗财经网</title>
+</head>
+<body>
+	<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3 class="text-center text-info">
+				老狗网
+			</h3>
+			<p class="text-warning lead">
+				 <strong>7*24小时全球实时财经新闻直播</strong> 
+			</p>
+			<br>
+			<p class="text-info lead">
+				<span>坚持做最好的财经直播报道，给百姓最真的财经动态</span>
+			</p>
+			<div id="content">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th class="col-md-2 column">
+								发布时间
+							</th>
+							<th class="col-md-10 column">
+								财经快讯
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for msg in news_list %}
+						<tr class="error">
+							<td class="news_time">
+								{{ msg.pub_time | date:"H:i:s"}}
+							</td>
+							<td class="news_content">
+								{{ msg.news }}
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
